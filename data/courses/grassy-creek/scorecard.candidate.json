@@ -1,0 +1,79 @@
+{
+  "course": {
+    "slug": "grassy-creek-gcc",
+    "name": "Grassy Creek Golf & Country Club",
+    "location": {
+      "address": "2360 Swiss Pine Lake Drive",
+      "city": "Spruce Pine",
+      "state": "NC",
+      "country": "USA"
+    },
+    "holeCount": 18,
+    "par": 72,
+    "courseDataVersion": "candidate-2026-09-10",
+    "verificationStatus": "candidate_unverified"
+  },
+  "tees": [
+    {
+      "id": "champions",
+      "name": "Champions",
+      "par": 72,
+      "totalYardage": 6277,
+      "rating": 69.9,
+      "slope": 130,
+      "ratingSlopeProvenance": "reported_not_club_verified"
+    },
+    {
+      "id": "regular",
+      "name": "Regular",
+      "par": 72,
+      "totalYardage": 5744,
+      "rating": 67.5,
+      "slope": 122,
+      "ratingSlopeProvenance": "reported_not_club_verified"
+    },
+    {
+      "id": "forward",
+      "name": "Forward",
+      "par": 72,
+      "totalYardage": 4797,
+      "rating": 67.4,
+      "slope": 120,
+      "ratingSlopeProvenance": "reported_not_club_verified"
+    }
+  ],
+  "holes": [
+    { "number": 1,  "par": 4, "strokeIndex": null, "yardages": { "champions": 364, "regular": 352, "forward": 267 } },
+    { "number": 2,  "par": 4, "strokeIndex": null, "yardages": { "champions": 343, "regular": 298, "forward": 244 } },
+    { "number": 3,  "par": 3, "strokeIndex": null, "yardages": { "champions": 167, "regular": 135, "forward": 114 } },
+    { "number": 4,  "par": 4, "strokeIndex": null, "yardages": { "champions": 385, "regular": 349, "forward": 279 } },
+    { "number": 5,  "par": 4, "strokeIndex": null, "yardages": { "champions": 309, "regular": 289, "forward": 260 } },
+    { "number": 6,  "par": 5, "strokeIndex": null, "yardages": { "champions": 500, "regular": 487, "forward": 435 } },
+    { "number": 7,  "par": 5, "strokeIndex": null, "yardages": { "champions": 487, "regular": 441, "forward": 363 } },
+    { "number": 8,  "par": 4, "strokeIndex": null, "yardages": { "champions": 434, "regular": 380, "forward": 320 } },
+    { "number": 9,  "par": 3, "strokeIndex": null, "yardages": { "champions": 191, "regular": 165, "forward": 155 } },
+    { "number": 10, "par": 4, "strokeIndex": null, "yardages": { "champions": 370, "regular": 315, "forward": 287 } },
+    { "number": 11, "par": 3, "strokeIndex": null, "yardages": { "champions": 217, "regular": 173, "forward": 145 } },
+    { "number": 12, "par": 4, "strokeIndex": null, "yardages": { "champions": 337, "regular": 325, "forward": 285 } },
+    { "number": 13, "par": 5, "strokeIndex": null, "yardages": { "champions": 456, "regular": 445, "forward": 359 } },
+    { "number": 14, "par": 4, "strokeIndex": null, "yardages": { "champions": 357, "regular": 349, "forward": 257 } },
+    { "number": 15, "par": 5, "strokeIndex": null, "yardages": { "champions": 514, "regular": 444, "forward": 382 } },
+    { "number": 16, "par": 4, "strokeIndex": null, "yardages": { "champions": 298, "regular": 283, "forward": 262 } },
+    { "number": 17, "par": 3, "strokeIndex": null, "yardages": { "champions": 166, "regular": 141, "forward": 127 } },
+    { "number": 18, "par": 4, "strokeIndex": null, "yardages": { "champions": 382, "regular": 373, "forward": 256 } }
+  ],
+  "provenance": {
+    "source": "Zomma Golf (zommagolf.com)",
+    "sourceStatus": "reported, not obtained directly from the club",
+    "sourceCheckedDate": "2026-08-21",
+    "transcribedIntoRepoDate": "2026-09-10",
+    "transcriptionMethod": "founder-provided transcription in chat — zommagolf.com is blocked by this environment's network egress and could not be fetched directly",
+    "verificationStatus": "candidate — high-confidence recent data, pending corroboration against a current physical/official Grassy Creek scorecard",
+    "unresolvedFields": ["holes[].strokeIndex"],
+    "unresolvedFieldsReason": "Zomma Golf explicitly does not hold stroke index data for this course; must not be back-filled from older/undated sources per founder directive of 2026-09-10",
+    "excludedSources": [
+      "data/courses/grassy-creek/draft-scorecard-UNVERIFIED.md (undated, pre-renovation risk, superseded and not usable even as a gap-filler)"
+    ],
+    "ratingSlopeProvenanceNote": "Zomma Golf labels rating/slope as reported rather than club-verified; preserved per-tee via tees[].ratingSlopeProvenance"
+  }
+}

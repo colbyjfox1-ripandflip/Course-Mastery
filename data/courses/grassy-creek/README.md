@@ -28,34 +28,30 @@ older hole layouts/yardages may no longer be accurate.
 | Field | Status | Evidence | Date / source |
 |---|---|---|---|
 | Course identity/location | **Resolved** | Multiple aggregator listings agree | undated, low-stakes fact, not course-data-sensitive |
-| Par (72) | **Recent evidence, not yet sole-sourced for seeding** | Zomma Golf | checked 2026-08-21 (per founder) |
-| Champions tee total yardage (6,277) | **Recent evidence** | Zomma Golf | checked 2026-08-21 |
-| Regular tee total yardage (5,744) | **Recent evidence** | Zomma Golf | checked 2026-08-21 |
-| Forward tee total yardage (4,797) | **Recent evidence** | Zomma Golf | checked 2026-08-21 |
-| Hole-by-hole par/yardage, all 3 tees | **Not yet in hand** | Zomma Golf reportedly has this | checked 2026-08-21 — table itself not yet transcribed into this repo, see "What's needed" below |
-| Stroke index, all holes | **Unresolved** | Zomma Golf explicitly does not include it | — |
-| Course rating / slope, per tee | **Unresolved for the confirmed-current tee set** | Older aggregator data exists (Blue 132/70.1, White 124/67.7, Gold 112/64.5, Red 105/63.1) but **not usable** — no update date, predates confirmed recency requirement, and tee names/count don't match Zomma Golf's 3-tee (Champions/Regular/Forward) naming, suggesting a tee-structure change | do not use |
-| Tee names/colors (Champions/Regular/Forward vs. older Blue/White/Gold/Red) | **Conflicting** | Zomma Golf uses Champions/Regular/Forward; older sources use Blue/White/Gold/Red | reinforces that the course changed and older tee structure is stale |
+| Par (72) | **Candidate, in hand** | Zomma Golf | checked 2026-08-21 |
+| Hole-by-hole par + yardage, all 18 holes, all 3 tees (Champions/Regular/Forward) | **Candidate, in hand, internally consistent** (all tee/front/back/total sums verified against the club-side totals) | Zomma Golf, founder-transcribed | checked 2026-08-21 |
+| Course rating / slope, per tee | **Candidate, in hand, explicitly reported-not-club-verified** | Zomma Golf | checked 2026-08-21 |
+| Stroke index, all 18 holes | **Unresolved — `null`** | Zomma Golf explicitly does not hold this data | not back-filled from any older/undated source, per founder directive |
+| Tee names (Champions/Regular/Forward) | **Candidate, in hand** — differs from an earlier, now-rejected undated source's Blue/White/Gold/Red naming, consistent with the founder's renovation/tee-structure-change caution | Zomma Golf | checked 2026-08-21 |
 
-Important: Zomma Golf itself is flagged by the founder as "reported rather
-than obtained directly from the club" — **recent supporting evidence, not
-sufficient by itself for authoritative seeding.** Before this becomes real
-seed data we still want a current physical scorecard (or official club/GHIN
-source) to corroborate it and fill stroke index/rating/slope.
+See `scorecard.candidate.json` for the full structured data and
+`provenance` block. **Status: candidate, not yet seeded.** Zomma Golf is
+explicitly "reported, not obtained directly from the club" — high-confidence
+recent supporting evidence, not sufficient alone for authoritative seeding.
+Stroke index remains unresolved until a current physical/official scorecard
+is available.
 
 ## What's needed next
 
-1. **The actual Zomma Golf hole-by-hole table** (par + yardage per hole,
-   all 3 tees: Champions, Regular, Forward) — not yet transcribed into this
-   repo. Please paste it (or a screenshot) and I'll add it here as
-   corroborating-but-not-sole-source evidence, clearly labeled.
-2. **A current physical/official scorecard** to serve as the actual
-   authoritative source — this is what unlocks moving data out of "staged"
-   and into `scorecard.json` for real seeding. Stroke index and
-   rating/slope will almost certainly need to come from this, since Zomma
-   Golf doesn't carry stroke index at all.
+A current physical/official Grassy Creek scorecard, to:
+1. Corroborate `scorecard.candidate.json` against the club's own numbers.
+2. Resolve stroke index for all 18 holes (Zomma Golf has none).
+3. Confirm rating/slope as club-verified rather than reported.
 
-Until both exist, everything in this directory remains staged, not seeded.
+Once that exists, `scorecard.candidate.json` becomes `scorecard.json`
+(course-data version bumped, `verificationStatus` flipped to
+`club_verified`) and `tools/seed` can load it for real.
+
 `draft-scorecard-UNVERIFIED.md` (the earlier, unverified back-nine-only
-snippet from an unknown/undated tee) is superseded by this recency policy
-and should be treated as **not usable at all**, not even as a fallback.
+snippet from an unknown/undated tee) remains superseded and unusable, even
+as a gap-filler — see its own header.
