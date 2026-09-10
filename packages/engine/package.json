@@ -7,12 +7,16 @@
   "types": "src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "echo \"no tests yet\" && exit 0"
+    "test": "node --import tsx --test src/**/*.test.ts"
   },
   "dependencies": {
-    "@course-mastery/schema": "workspace:*"
+    "@course-mastery/schema": "workspace:*",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "tsx": "^4.19.0",
+    "@course-mastery/fixtures": "workspace:*",
+    "@types/node": "^22.0.0"
   }
 }
