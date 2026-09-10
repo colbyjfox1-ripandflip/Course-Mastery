@@ -1,0 +1,22 @@
+{
+  "name": "@course-mastery/seed",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"no tests yet\" && exit 0",
+    "seed:courses": "tsx src/seed-courses.ts",
+    "seed:catalog": "tsx src/seed-catalog.ts"
+  },
+  "dependencies": {
+    "@course-mastery/schema": "workspace:*",
+    "@course-mastery/catalog": "workspace:*",
+    "@supabase/supabase-js": "^2.116.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "tsx": "^4.19.0",
+    "@types/node": "^22.0.0"
+  }
+}
