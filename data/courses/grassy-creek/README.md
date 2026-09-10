@@ -1,53 +1,61 @@
 # Grassy Creek — Course Data Staging (NOT YET AUTHORITATIVE)
 
 **Nothing in this directory is loaded into the app or treated as real course
-data yet.** Per the project's data rules, course/tee/hole data must be
-verified against a real scorecard before it's seeded — guessing par,
-yardage, or stroke index is not acceptable, since accomplishments and
-personalization are built directly on top of these numbers.
+data yet.**
 
-## What was attempted
+Confirmed course: **Grassy Creek Golf & Country Club**, 2360 Swiss Pine
+Lake Drive, Spruce Pine, NC 28777.
 
-A web search for "Grassy Creek Golf Course scorecard" turned up a strong
-candidate: **Grassy Creek Golf & Country Club, Spruce Pine, NC**
-(18 holes, par 72, ~6,277 yards from the longest tee, course rating 70.2 /
-slope 132 on that tee, per aggregator listings).
+## Recency rule (founder directive, 2026-09-10)
 
-I then tried to fetch full detailed scorecards (all tees, all 18 holes,
-stroke indexes) from six scorecard-hosting sites (BlueGolf, ForeTee,
-GolfLink, Golfify, OffCourse, 18Birdies). **Every one of those domains is
-blocked by this environment's network egress proxy**, so I could not pull
-verified structured data. The only information I have is a partial,
-unverified search-result snippet — see `draft-scorecard-UNVERIFIED.md` in
-this directory for exactly what it contains.
+Grassy Creek underwent course changes within the last several years.
+**Do not use legacy scorecards, or any source whose underlying course-data
+update date cannot be established.** Only evidence that can reasonably be
+shown to reflect the course within roughly the last 1–2 years may be used.
+A webpage being crawled/updated recently is **not** sufficient by itself —
+the underlying scorecard/course data itself must be current. Do not patch
+missing fields (stroke index, rating, slope, tee names, yardages) from
+older sources just to fill gaps — an unresolved field stays `null` rather
+than being contaminated with possibly pre-renovation data.
 
-## What's missing / needs your confirmation
+This is corroborated by an unrelated search snippet noting Grassy Creek has
+"been newly restored and renovated" (new cart paths, bunker renovations,
+practice area renovations) — consistent with the founder's caution that
+older hole layouts/yardages may no longer be accurate.
 
-1. **Is this the right course?** Confirm "Grassy Creek Golf & Country Club,
-   Spruce Pine, NC" is the Grassy Creek you mean — there may be other
-   courses with this name elsewhere.
-2. **Front nine (holes 1–9):** completely missing — par, yardage, stroke
-   index for every hole.
-3. **Back nine (holes 10–18):** I have par + yardage from one tee only
-   (unclear which — likely the longest/back tee) from a search snippet,
-   **unverified against a primary source**. Stroke index is missing for
-   all 18 holes.
-4. **All other tees** (typically at least 3–4 tee sets: e.g. Black/Blue/
-   White/Red or similar) — no data at all. Course Mastery is tee-agnostic
-   at the accomplishment level, but the underlying hole/tee rows still need
-   real par/yardage/rating/slope per tee (ARCHITECTURE.md §5).
-5. **Course rating / slope per tee** — only have it for one tee, unverified.
+## Field-by-field status
 
-## What I need from you
+| Field | Status | Evidence | Date / source |
+|---|---|---|---|
+| Course identity/location | **Resolved** | Multiple aggregator listings agree | undated, low-stakes fact, not course-data-sensitive |
+| Par (72) | **Recent evidence, not yet sole-sourced for seeding** | Zomma Golf | checked 2026-08-21 (per founder) |
+| Champions tee total yardage (6,277) | **Recent evidence** | Zomma Golf | checked 2026-08-21 |
+| Regular tee total yardage (5,744) | **Recent evidence** | Zomma Golf | checked 2026-08-21 |
+| Forward tee total yardage (4,797) | **Recent evidence** | Zomma Golf | checked 2026-08-21 |
+| Hole-by-hole par/yardage, all 3 tees | **Not yet in hand** | Zomma Golf reportedly has this | checked 2026-08-21 — table itself not yet transcribed into this repo, see "What's needed" below |
+| Stroke index, all holes | **Unresolved** | Zomma Golf explicitly does not include it | — |
+| Course rating / slope, per tee | **Unresolved for the confirmed-current tee set** | Older aggregator data exists (Blue 132/70.1, White 124/67.7, Gold 112/64.5, Red 105/63.1) but **not usable** — no update date, predates confirmed recency requirement, and tee names/count don't match Zomma Golf's 3-tee (Champions/Regular/Forward) naming, suggesting a tee-structure change | do not use |
+| Tee names/colors (Champions/Regular/Forward vs. older Blue/White/Gold/Red) | **Conflicting** | Zomma Golf uses Champions/Regular/Forward; older sources use Blue/White/Gold/Red | reinforces that the course changed and older tee structure is stale |
 
-The most reliable source is a photo of the actual scorecard (or your GHIN/
-club's official card), since that's also exactly the kind of input the
-image-import pipeline is meant to handle later. Any of these work:
+Important: Zomma Golf itself is flagged by the founder as "reported rather
+than obtained directly from the club" — **recent supporting evidence, not
+sufficient by itself for authoritative seeding.** Before this becomes real
+seed data we still want a current physical scorecard (or official club/GHIN
+source) to corroborate it and fill stroke index/rating/slope.
 
-- A photo/scan of the physical scorecard (all tees, all 18 holes)
-- The official club/GHIN course data if you have login access
-- Confirmation + corrections to `draft-scorecard-UNVERIFIED.md` if you
-  happen to know the numbers are close enough to fix by hand
+## What's needed next
 
-Once confirmed, I'll write the real `scorecard.json` in this directory and
-wire it into `tools/seed`. Nothing here is used by the app until then.
+1. **The actual Zomma Golf hole-by-hole table** (par + yardage per hole,
+   all 3 tees: Champions, Regular, Forward) — not yet transcribed into this
+   repo. Please paste it (or a screenshot) and I'll add it here as
+   corroborating-but-not-sole-source evidence, clearly labeled.
+2. **A current physical/official scorecard** to serve as the actual
+   authoritative source — this is what unlocks moving data out of "staged"
+   and into `scorecard.json` for real seeding. Stroke index and
+   rating/slope will almost certainly need to come from this, since Zomma
+   Golf doesn't carry stroke index at all.
+
+Until both exist, everything in this directory remains staged, not seeded.
+`draft-scorecard-UNVERIFIED.md` (the earlier, unverified back-nine-only
+snippet from an unknown/undated tee) is superseded by this recency policy
+and should be treated as **not usable at all**, not even as a fallback.

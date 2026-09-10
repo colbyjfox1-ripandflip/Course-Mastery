@@ -1,5 +1,14 @@
 # DRAFT — UNVERIFIED — DO NOT SEED
 
+**SUPERSEDED (2026-09-10):** the founder has confirmed Grassy Creek
+underwent course changes in the last several years and that undated
+sources like this one must not be used at all — not even to fill gaps.
+This file is kept only as a record of the initial (rejected) search
+attempt. See `README.md` in this directory for the current, recency-gated
+data status.
+
+---
+
 Source: a single web-search-engine summary of aggregator listings (not
 fetched directly — see `README.md` in this directory for why). This is
 included only so you can see exactly what partial information surfaced,
